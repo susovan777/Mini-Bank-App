@@ -66,3 +66,23 @@ nav {
 .login-btn:hover {
     color: inherit;
 }
+
+/* -------------------------------------------- */
+.app {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 1.5rem;
+}
+
+.balance {
+    display: flex;
+    justify-content: space-between;
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.transactions {
+    grid-row-start: 2;
+    grid-row-end: 5;
+}
