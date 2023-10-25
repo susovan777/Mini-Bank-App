@@ -28,3 +28,41 @@ nav {
     height: 3.5rem;
 }
 
+.login {
+    display: flex;
+}
+
+.login-input {
+    border: none;
+    border-radius: 1rem;
+    width: 6.7rem;
+    margin-right: 0.5rem;
+    padding: 0.3rem 1.5rem;
+    font-size: 1rem;
+    font-family: inherit;
+    color: inherit;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+.login-input:focus {
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.login-input::placeholder {
+    color: #bbb;
+}
+
+.login-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #777;
+    font-size: 1.3rem;
+    transition: all 0.3s;
+}
+
+.login-btn:hover {
+    color: inherit;
+}
