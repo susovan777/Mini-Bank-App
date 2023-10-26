@@ -77,7 +77,7 @@ nav {
     gap: 1.5rem;
 }
 
-            /* ******************** */
+/* ******************** */
 .balance {
     display: flex;
     justify-content: space-between;
@@ -100,7 +100,7 @@ nav {
     font-size: 2.5rem;
 }
 
-            /* ******************** */
+/* ******************** */
 
 .transactions {
     grid-row-start: 2;
@@ -133,8 +133,25 @@ nav {
 }
 
 .debit {
-    background: linear-gradient(to bottom, #e52a5a , #ff585f);
+    background: linear-gradient(to bottom, #e52a5a, #ff585f);
 }
 
-            /* ******************** */
+/* ******************** */
+
+.operations {
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.operations-transfer {
+    background: linear-gradient(to bottom right, #ffcb03, #ffb003);
+}
+
+.operations-loan {
+    background: linear-gradient(to bottom right, #99e05f, #3db583);
+}
+
+.operations-close {
+    background: linear-gradient(to bottom right, #ff585f,#e52a5a);
+}
 
