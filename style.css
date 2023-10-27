@@ -187,6 +187,17 @@ nav {
     transition: all 0.3s;
 }
 
+/* removed the arrow buttons from number input field Chrome, Safari, Edge, Opera */
+.entry_number::-webkit-inner-spin-button,
+.entry_number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .entry:focus {
     outline: none;
     background-color: rgba(255, 255, 255, 0.6);
