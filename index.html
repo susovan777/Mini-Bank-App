@@ -86,18 +86,18 @@
             <h2>Transfer money</h2>
             <form class="form">
                 <input type="text" id="transfer" class="entry">
-                <input type="text" id="amount" class="entry">
+                <input type="number" id="amount" class="entry entry_number" min="1">
                 <input type="button" class="btn" value="→">
-                <label for="transfer">Transfer to</label>
-                <label for="amount">Amount</label>
+                <label class="form_label" for="transfer">Transfer to</label>
+                <label class="form_label" for="amount">Amount</label>
             </form>
         </div>
         <div class="operations operations-loan">
             <h2>Request loan</h2>
-            <form class="form">
-                <input type="text" id="loan" class="entry">
+            <form class="form form-loan">
+                <input type="number" id="loan" class="entry entry_number" min="1">
                 <input type="button" class="btn" value="→">
-                <label for="loan">Amount</label>
+                <label class="form_label form_label-loan" for="loan">Amount</label>
             </form>
         </div>
         <div class="operations operations-close">
@@ -106,8 +106,8 @@
                 <input type="text" id="user" class="entry">
                 <input type="text" id="pin" class="entry">
                 <input type="button" class="btn" value="→">
-                <label for="user">Confirm user</label>
-                <label for="pin">Confirm PIN</label>
+                <label class="form_label" for="user">Confirm user</label>
+                <label class="form_label" for="pin">Confirm PIN</label>
             </form>
         </div>
 
