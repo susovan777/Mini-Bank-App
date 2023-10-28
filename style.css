@@ -225,3 +225,60 @@ input[type=number] {
 .form_label-loan {
     grid-row: 2;
 }
+
+/* ******************** */
+
+.summary {
+    display: flex;
+    align-items: baseline;
+    margin-top: 0.8rem;
+}
+
+.summary_label {
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 0.5rem;
+}
+
+.summary_value {
+    font-family: inherit;
+    font-size: 1.3rem;
+    margin-right: 1.5rem;
+}
+
+.btn_sort {
+    border: none;
+    margin-left: auto;
+    background: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.summary_value--in {
+    color: #01a301;
+}
+.summary_value--int {
+    color: #00da00;
+}
+
+.summary_value--out {
+    color: #e52a5a;
+}
+
+.logout-timer {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-family: inherit;
+    /* font-weight: 500; */
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* ******************** */
+
+.timer {
+    font-weight: 600;
+}
