@@ -109,7 +109,6 @@ nav {
     grid-row-start: 2;
     grid-row-end: 5;
     background-color: #ffffff;
-    /* height: 30rem; */
     overflow: auto;
 }
 
@@ -272,7 +271,6 @@ input[type=number] {
     text-align: right;
     margin-top: 1.5rem;
     font-family: inherit;
-    /* font-weight: 500; */
     font-size: 0.8rem;
     color: #777;
 }
