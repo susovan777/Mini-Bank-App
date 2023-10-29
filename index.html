@@ -18,8 +18,8 @@
         <p class="welcome">Login to get started</p>
         <img src="./img/logo.png" alt="Logo" class="logo">
         <form class="login">
-            <input type="text" class="login-input login-input--user" placeholder="user">
-            <input type="text" class="login-input login-input--pin" maxlength="4" placeholder="PIN">
+            <input type="text" class="login-input login_input--user" placeholder="user">
+            <input type="text" class="login-input login_input--pin" maxlength="4" placeholder="PIN">
             <button class="login-btn">&rarr;</button>
         </form>
     </nav>
@@ -60,9 +60,9 @@
         <div class="operations operations-transfer">
             <h2>Transfer money</h2>
             <form class="form">
-                <input type="text" id="transfer" class="entry">
-                <input type="number" id="amount" class="entry entry_number" min="1">
-                <input type="button" class="btn" value="&rarr;">
+                <input type="text" id="transfer" class="entry ops_transfer-to">
+                <input type="number" id="amount" class="entry entry_number ops_transfer-amount" min="1">
+                <input type="button" class="btn btn-transfer" value="&rarr;">
                 <label class="form_label" for="transfer">Transfer to</label>
                 <label class="form_label" for="amount">Amount</label>
             </form>
@@ -72,8 +72,8 @@
         <div class="operations operations-loan">
             <h2>Request loan</h2>
             <form class="form form-loan">
-                <input type="number" id="loan" class="entry entry_number" min="1">
-                <input type="button" class="btn" value="&rarr;">
+                <input type="number" id="loan" class="entry entry_number ops_loan-amount" min="1">
+                <input type="button" class="btn btn-loan" value="&rarr;">
                 <label class="form_label form_label-loan" for="loan">Amount</label>
             </form>
         </div>
@@ -82,9 +82,9 @@
         <div class="operations operations-close">
             <h2>Close account</h2>
             <form class="form">
-                <input type="text" id="user" class="entry">
-                <input type="password" id="pin" class="entry">
-                <input type="button" class="btn" value="&rarr;">
+                <input type="text" id="user" class="entry ops_close-user">
+                <input type="password" id="pin" class="entry ops_close-pin">
+                <input type="button" class="btn btn-close" value="&rarr;">
                 <label class="form_label" for="user">Confirm user</label>
                 <label class="form_label" for="pin">Confirm PIN</label>
             </form>
