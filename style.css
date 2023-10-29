@@ -192,12 +192,12 @@ nav {
 /* removed the arrow buttons from number input field Chrome, Safari, Edge, Opera */
 .entry_number::-webkit-inner-spin-button,
 .entry_number::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+    appearance: none; /* instead of -webkit-appearance: none;*/
 }
 
 /* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
+    appearance: textfield; /* instead of -moz-appearance: none;*/
 }
 
 .entry:focus {

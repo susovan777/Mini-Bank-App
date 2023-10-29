@@ -41,71 +41,50 @@
         <div class="transactions">
             <div class="txns">
                 <div class="txns_type credit">deposite</div>
+                <div class="txns_date">Today</div>
                 <div class="txns_value">₹200</div>
             </div>
             <div class="txns">
                 <div class="txns_type debit">withdrawal</div>
+                <div class="txns_date">3 days ago</div>
                 <div class="txns_value">-₹100</div>
             </div>
             <div class="txns">
                 <div class="txns_type credit">deposite</div>
+                <div class="txns_date">12/03/2022</div>
                 <div class="txns_value">₹200</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type debit">withdrawal</div>
-                <div class="txns_value">-₹300</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type credit">deposite</div>
-                <div class="txns_value">₹500</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type credit">deposite</div>
-                <div class="txns_value">₹200</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type debit">withdrawal</div>
-                <div class="txns_value">-₹100</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type credit">deposite</div>
-                <div class="txns_value">₹200</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type debit">withdrawal</div>
-                <div class="txns_value">-₹300</div>
-            </div>
-            <div class="txns">
-                <div class="txns_type credit">deposite</div>
-                <div class="txns_value">₹500</div>
             </div>
         </div>
 
-        <!-- OPERATIONS -->
+        <!-- OPERATIONS: Transfer -->
         <div class="operations operations-transfer">
             <h2>Transfer money</h2>
             <form class="form">
                 <input type="text" id="transfer" class="entry">
                 <input type="number" id="amount" class="entry entry_number" min="1">
-                <input type="button" class="btn" value="→">
+                <input type="button" class="btn" value="&rarr;">
                 <label class="form_label" for="transfer">Transfer to</label>
                 <label class="form_label" for="amount">Amount</label>
             </form>
         </div>
+
+        <!-- OPERATIONS: Loan -->
         <div class="operations operations-loan">
             <h2>Request loan</h2>
             <form class="form form-loan">
                 <input type="number" id="loan" class="entry entry_number" min="1">
-                <input type="button" class="btn" value="→">
+                <input type="button" class="btn" value="&rarr;">
                 <label class="form_label form_label-loan" for="loan">Amount</label>
             </form>
         </div>
+
+        <!-- OPERATIONS: Close -->
         <div class="operations operations-close">
             <h2>Close account</h2>
             <form class="form">
                 <input type="text" id="user" class="entry">
-                <input type="text" id="pin" class="entry">
-                <input type="button" class="btn" value="→">
+                <input type="password" id="pin" class="entry">
+                <input type="button" class="btn" value="&rarr;">
                 <label class="form_label" for="user">Confirm user</label>
                 <label class="form_label" for="pin">Confirm PIN</label>
             </form>
@@ -114,12 +93,12 @@
         <!-- balance SUMMARY -->
         <div class="summary">
             <p class="summary_label">In</p>
-            <p class="summary_value summary_value--in">₹3028</p>
+            <p class="summary_value summary_value--in">₹0000</p>
             <p class="summary_label">Out</p>
-            <p class="summary_value summary_value--out">₹1024</p>
+            <p class="summary_value summary_value--out">₹0000</p>
             <p class="summary_label">Interest</p>
-            <p class="summary_value summary_value--int">₹230</p>
-            <button class="btn_sort">↓ SORT</button>
+            <p class="summary_value summary_value--int">₹0000</p>
+            <button class="btn_sort">&downarrow; SORT</button>
         </div>
 
         <!-- logout TIMER -->
