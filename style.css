@@ -133,6 +133,19 @@ nav {
     height: fit-content;
 }
 
+.txns_date {
+    text-transform: uppercase;
+    color: #444;
+    font-family: inherit;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.txns_value {
+    font-family: inherit;
+    font-weight: 500;
+}
+
 .credit {
     background: linear-gradient(to bottom, #02ff02, #01a301);
 }
