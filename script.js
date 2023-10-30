@@ -31,7 +31,7 @@ const account4 = {
 
 const accounts = [account1, account2, account3, account4];
 
-// ********** Elements selections ************
+// **************** Elements selections ****************
 // login navbar
 const loginWelcome = document.querySelector('.welcome');
 
@@ -67,3 +67,24 @@ const inputClosePin = document.querySelector('ops_close-pin');
 
 // logout timer
 const labelTimer = document.querySelector('.timer');
+
+// /////////////////////////////////////////////////////////////////////////////////
+
+// global variable
+const displayTransactions = function (txns) {
+    containerTransactions.innerHTML = '';
+    txns.forEach((txn) => {
+        const type = txn > 0 ? 'credit' : 'debit'; // if txn +ve then credit or debit
+        
+        const html = `
+        <div class="txns">
+            <div class="txns_type ${type}">${type}</div>
+            
+            <div class="txns_value">${txn}</div>
+        </div>
+        `;
+
+        containerTransactions.insertAdjacentHTML('afterbegin', html);
+    });
+}
+displayTransactions(account1.txns);
