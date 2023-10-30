@@ -88,3 +88,16 @@ const displayTransactions = function (txns) {
     });
 }
 displayTransactions(account1.txns);
+
+// Computing the username
+const createUsername = function(accounts) {
+    accounts.forEach(acnt => {
+        acnt.userName = acnt.owner
+            .toLocaleLowerCase()
+            .split(' ')
+            .map(name => name[0])
+            .join('');
+    })
+}
+createUsername(accounts)
+console.log(accounts);
