@@ -100,4 +100,12 @@ const createUsername = function(accounts) {
     })
 }
 createUsername(accounts)
-console.log(accounts);
+// console.log(accounts);
+
+// Calculate deposits and withdrawals
+const transactions = account1.txns;
+const deposits = transactions.filter((txn) => txn > 0);
+console.log(deposits);
+
+const withdrawals = transactions.filter((txn) => txn < 0);
+console.log(withdrawals); 
