@@ -87,7 +87,6 @@ const displayTransactions = function (txns) {
         containerTransactions.insertAdjacentHTML('afterbegin', html);
     });
 }
-displayTransactions(account1.txns);
 
 // Computing the username
 const createUsername = function(accounts) {
@@ -100,15 +99,14 @@ const createUsername = function(accounts) {
     })
 }
 createUsername(accounts)
-// console.log(accounts);
 
 // Calculate deposits and withdrawals
 const transactions = account1.txns;
 const deposits = transactions.filter((txn) => txn > 0);
-console.log(deposits); 
+// console.log(deposits); 
 
 const withdrawals = transactions.filter((txn) => txn < 0);
-console.log(withdrawals); 
+// console.log(withdrawals); 
 
 // Lession 153: The Reduce method
 
@@ -117,31 +115,27 @@ function calcDispBalance(transactions) {
     labelBalance.textContent = `₹${balance}`;
 }
 
-calcDispBalance(transactions);
-
 // Lession 155: The Magic of Chaining Methods
 
-function calcDispSummary(transactions) {
-    const incomes = transactions
+function calcDispSummary(account) {
+    const incomes = account.txns
         .filter(txn => txn > 0) // only the deposits
         .reduce((acc, cv) => acc + cv, 0); // total deposits
 
-    const expenses = transactions
+    const expenses = account.txns
         .filter(txn => txn < 0) // only the withdrawals 
         .reduce((acc, cv) => acc + cv, 0); // total withdrawals
 
-    const interest = transactions
+    const interest = account.txns
         .filter(txn => txn > 0) // only deposits
-        .map(txn => txn * account1.interestRate / 100) // interests on deposits
+        .map(txn => txn * account.interestRate / 100) // interests on deposits
         .filter(int => int > 1) // intersts only more than 1
         .reduce((acc, int) => acc + int, 0);
 
     labelSumIn.textContent = `₹${incomes}`;
     labelSumOut.textContent = `₹${Math.abs(expenses)}`;
-    labelSumInterest.textContent = `₹${interest}`;
+    labelSumInterest.textContent = `₹${interest.toFixed(2)}`;
 }
-
-calcDispSummary(transactions);
 
 // Lecture #157 >>> The Find Method
 
@@ -150,6 +144,7 @@ console.log(accounts);
 
 let currentAccount;
 
+// Event handler on login button
 btnLogin.addEventListener('click', e => {
     e.preventDefault(); // preventing default form submit
     
@@ -157,14 +152,21 @@ btnLogin.addEventListener('click', e => {
     console.log(currentAccount);
     
     if (currentAccount?.pin === Number(inputLoginPin.value)) {
-        // console.log('Logged In');
+        // Clear input field
+        inputLoginUser.value = inputLoginPin.value = '';
+        inputLoginPin.blur();
+
         // Update UI and display message
+        loginWelcome.textContent = `Welcome again, ${currentAccount.owner.split(' ')[0]}`
+        containerApp.style.opacity = 1;
 
         // Display transactions
+        displayTransactions(currentAccount.txns);
         
         // Display balance
-        
-        // Display summary
+        calcDispBalance(currentAccount.txns);
 
+        // Display summary
+        calcDispSummary(currentAccount);
     }
 })
