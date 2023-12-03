@@ -197,3 +197,15 @@ btnTransfer.addEventListener('click', e => {
 })
 
 
+// Implementing close account
+
+btnClose.addEventListener('click', e => {
+    e.preventDefault();
+    // console.log('Closed');
+    if(currentAccount.userName === inputCloseUser.value && currentAccount.pin === Number(inputClosePin.value)) {
+        const indexCloseAcc = accounts.indexOf(currentAccount);
+        accounts.splice(indexCloseAcc, 1);
+        console.log('Closed', indexCloseAcc);
+        containerApp.style.opacity = 0;
+    }   
+})
