@@ -9,7 +9,7 @@ const account1 = {
 };
 
 const account2 = {
-    owner: "Umesh Srevastav",
+    owner: "Dipam Mehra",
     txns: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
     interestRate: 1.5, // %
     pin: 2222
@@ -105,7 +105,25 @@ createUsername(accounts)
 // Calculate deposits and withdrawals
 const transactions = account1.txns;
 const deposits = transactions.filter((txn) => txn > 0);
-console.log(deposits);
+console.log(deposits); 
 
 const withdrawals = transactions.filter((txn) => txn < 0);
 console.log(withdrawals); 
+
+// Lession 153: The Reduce method
+console.log(transactions);
+
+function calcDispBalance(transactions) {
+    const balance = transactions.reduce((acc, cv) => acc + cv, 0)
+    labelBalance.textContent = `₹${balance}`;
+}
+
+calcDispBalance(transactions);
+
+// maximum value
+const max = transactions.reduce((acc, cv) => {
+    if (acc > cv) return acc;
+    else return cv;
+}, transactions[0])
+console.log(max);
+
