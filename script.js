@@ -80,7 +80,7 @@ const displayTransactions = function (txns) {
         <div class="txns">
             <div class="txns_type ${type}">${type}</div>
             
-            <div class="txns_value">${txn}</div>
+            <div class="txns_value">${txn} INR</div>
         </div>
         `;
 
@@ -111,7 +111,6 @@ const withdrawals = transactions.filter((txn) => txn < 0);
 console.log(withdrawals); 
 
 // Lession 153: The Reduce method
-console.log(transactions);
 
 function calcDispBalance(transactions) {
     const balance = transactions.reduce((acc, cv) => acc + cv, 0)
@@ -120,10 +119,27 @@ function calcDispBalance(transactions) {
 
 calcDispBalance(transactions);
 
-// maximum value
-const max = transactions.reduce((acc, cv) => {
-    if (acc > cv) return acc;
-    else return cv;
-}, transactions[0])
-console.log(max);
+// Lession 155: The Magic of Chaining Methods
+console.log(transactions);
 
+function calcDispSummary(transactions) {
+    const incomes = transactions
+        .filter(txn => txn > 0) // only the deposits
+        .reduce((acc, cv) => acc + cv, 0); // total deposits
+
+    const expenses = transactions
+        .filter(txn => txn < 0) // only the withdrawals 
+        .reduce((acc, cv) => acc + cv, 0); // total withdrawals
+
+    const interest = transactions
+        .filter(txn => txn > 0) // only deposits
+        .map(txn => txn * account1.interestRate / 100) // interests on deposits
+        .filter(int => int > 1) // intersts only more than 1
+        .reduce((acc, int) => acc + int, 0);
+
+    labelSumIn.textContent = `₹${incomes}`;
+    labelSumOut.textContent = `₹${Math.abs(expenses)}`;
+    labelSumInterest.textContent = `₹${interest}`;
+}
+
+calcDispSummary(transactions);
