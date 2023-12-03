@@ -57,13 +57,13 @@ const btnClose = document.querySelector('.btn-close');
 const btnSort = document.querySelector('.btn_sort');
 
 // all input field
-const inputLoginUser = document.querySelector('login_input--user');
-const inputLoginPin = document.querySelector('login_input--pin');
-const inputTransferTo = document.querySelector('ops_transfer-to');
-const inputTransferAmount = document.querySelector('ops_transfer-amount');
-const inputLoanAmount = document.querySelector('ops_loan-amount');
-const inputCloseUser = document.querySelector('ops_close-user');
-const inputClosePin = document.querySelector('ops_close-pin');
+const inputLoginUser = document.querySelector('.login_input--user');
+const inputLoginPin = document.querySelector('.login_input--pin');
+const inputTransferTo = document.querySelector('.ops_transfer-to');
+const inputTransferAmount = document.querySelector('.ops_transfer-amount');
+const inputLoanAmount = document.querySelector('.ops_loan-amount');
+const inputCloseUser = document.querySelector('.ops_close-user');
+const inputClosePin = document.querySelector('.ops_close-pin');
 
 // logout timer
 const labelTimer = document.querySelector('.timer');
@@ -120,7 +120,6 @@ function calcDispBalance(transactions) {
 calcDispBalance(transactions);
 
 // Lession 155: The Magic of Chaining Methods
-console.log(transactions);
 
 function calcDispSummary(transactions) {
     const incomes = transactions
@@ -143,3 +142,29 @@ function calcDispSummary(transactions) {
 }
 
 calcDispSummary(transactions);
+
+// Lecture #157 >>> The Find Method
+
+// Lecture #158 >>> Implementing Login
+console.log(accounts);
+
+let currentAccount;
+
+btnLogin.addEventListener('click', e => {
+    e.preventDefault(); // preventing default form submit
+    
+    currentAccount = accounts.find(acnt => inputLoginUser.value === acnt.userName);
+    console.log(currentAccount);
+    
+    if (currentAccount?.pin === Number(inputLoginPin.value)) {
+        // console.log('Logged In');
+        // Update UI and display message
+
+        // Display transactions
+        
+        // Display balance
+        
+        // Display summary
+
+    }
+})
