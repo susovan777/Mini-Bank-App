@@ -70,12 +70,24 @@ const labelTimer = document.querySelector('.timer');
 
 // /////////////////////////////////////////////////////////////////////////////////
 
+// Computing the username
+const createUsername = function (accounts) {
+    accounts.forEach(acnt => {
+        acnt.userName = acnt.owner
+            .toLocaleLowerCase()
+            .split(' ')
+            .map(name => name[0])
+            .join('');
+    })
+}
+createUsername(accounts)
+
 // global variable
 const displayTransactions = function (txns) {
     containerTransactions.innerHTML = '';
     txns.forEach((txn) => {
         const type = txn > 0 ? 'credit' : 'debit'; // if txn +ve then credit or debit
-        
+
         const html = `
         <div class="txns">
             <div class="txns_type ${type}">${type}</div>
@@ -88,17 +100,6 @@ const displayTransactions = function (txns) {
     });
 }
 
-// Computing the username
-const createUsername = function(accounts) {
-    accounts.forEach(acnt => {
-        acnt.userName = acnt.owner
-            .toLocaleLowerCase()
-            .split(' ')
-            .map(name => name[0])
-            .join('');
-    })
-}
-createUsername(accounts)
 
 // Calculate deposits and withdrawals
 const transactions = account1.txns;
@@ -108,15 +109,13 @@ const deposits = transactions.filter((txn) => txn > 0);
 const withdrawals = transactions.filter((txn) => txn < 0);
 // console.log(withdrawals); 
 
-// Lession 153: The Reduce method
-
-function calcDispBalance(transactions) {
-    const balance = transactions.reduce((acc, cv) => acc + cv, 0)
-    labelBalance.textContent = `₹${balance}`;
+// Updating the balance to the UI
+function calcDispBalance(account) {
+    account.balance = account.txns.reduce((acc, cv) => acc + cv, 0)
+    labelBalance.textContent = `₹${account.balance}`;
 }
 
-// Lession 155: The Magic of Chaining Methods
-
+// Calculate and update the summary to the UI
 function calcDispSummary(account) {
     const incomes = account.txns
         .filter(txn => txn > 0) // only the deposits
@@ -137,9 +136,18 @@ function calcDispSummary(account) {
     labelSumInterest.textContent = `₹${interest.toFixed(2)}`;
 }
 
-// Lecture #157 >>> The Find Method
+const updateUI = function (accnt) {
+    // Display transactions
+    displayTransactions(accnt.txns);
 
-// Lecture #158 >>> Implementing Login
+    // Display balance
+    calcDispBalance(accnt);
+
+    // Display summary
+    calcDispSummary(accnt);
+}
+
+// Implementing Login
 console.log(accounts);
 
 let currentAccount;
@@ -147,10 +155,10 @@ let currentAccount;
 // Event handler on login button
 btnLogin.addEventListener('click', e => {
     e.preventDefault(); // preventing default form submit
-    
+
     currentAccount = accounts.find(acnt => inputLoginUser.value === acnt.userName);
     console.log(currentAccount);
-    
+
     if (currentAccount?.pin === Number(inputLoginPin.value)) {
         // Clear input field
         inputLoginUser.value = inputLoginPin.value = '';
@@ -160,13 +168,32 @@ btnLogin.addEventListener('click', e => {
         loginWelcome.textContent = `Welcome again, ${currentAccount.owner.split(' ')[0]}`
         containerApp.style.opacity = 1;
 
-        // Display transactions
-        displayTransactions(currentAccount.txns);
-        
-        // Display balance
-        calcDispBalance(currentAccount.txns);
-
-        // Display summary
-        calcDispSummary(currentAccount);
+        updateUI(currentAccount);
     }
 })
+
+// Implementing Transfer
+
+btnTransfer.addEventListener('click', e => {
+    e.preventDefault();
+    const amount = Number(inputTransferAmount.value);
+    const receiverAcc = accounts.find(acc => acc.userName === inputTransferTo.value);
+
+    console.log(amount, receiverAcc);
+    // 👉 Checkes: amount should be more than 0, 
+    // receiver account should exist, 
+    // amount should be less than or equal to the balance of current account 
+    // receiver account and the current account should be different
+    if (amount > 0 && receiverAcc && amount <= currentAccount.balance && receiverAcc?.userName != currentAccount.userName) {
+        currentAccount.txns.push(-amount);
+        receiverAcc.txns.push(amount);
+
+        inputTransferAmount.value = '';
+        inputTransferTo.value = '';
+
+        updateUI(currentAccount);
+    }
+    console.log(currentAccount.txns, receiverAcc.txns);
+})
+
+
