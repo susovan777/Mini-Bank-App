@@ -83,9 +83,12 @@ const createUsername = function (accounts) {
 createUsername(accounts)
 
 // global variable
-const displayTransactions = function (txns) {
+const displayTransactions = function (txns, sort = false) {
     containerTransactions.innerHTML = '';
-    txns.forEach((txn) => {
+
+    let movs = sort ? txns.slice().sort((a, b) => a - b) : txns;
+
+    movs.forEach((txn) => {
         const type = txn > 0 ? 'credit' : 'debit'; // if txn +ve then credit or debit
 
         const html = `
@@ -208,4 +211,13 @@ btnClose.addEventListener('click', e => {
         console.log('Closed', indexCloseAcc);
         containerApp.style.opacity = 0;
     }   
+})
+
+// Implementing the sort button 
+
+let sorted = false;
+btnSort.addEventListener('click', (e) => {
+    e.preventDefault();
+    displayTransactions(currentAccount.txns, !sorted);
+    sorted = !sorted;
 })
